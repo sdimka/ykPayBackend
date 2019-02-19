@@ -15,16 +15,21 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-@FeignClient(name = "jsonplaceholder", url = "https://payment.yandex.net/api/v3", path = "/payments",
+// @FeignClient(name = "jsonplaceholder", url = "https://payment.yandex.net/api/v3", path = "/payments",
+
+@FeignClient(name = "jsonplaceholder", url = "https://postman-echo.com/post", path = "/",
         configuration = FeignClientConfiguration.class)
 public interface ApiClient {
 
-    @RequestMapping(method = GET, value = "/23ecf75e-000f-5000-8000-149fe17e1ffa",
+    @RequestMapping(method = GET, path="/{paymentID}",
             consumes = APPLICATION_JSON_VALUE)
-    Resource<Payment> getPayment(@RequestParam("_limit") final int postLimit);
+    Resource<Payment> getPayment(@RequestParam("_limit") final int postLimit,
+                                 @PathVariable("paymentID") String paymentID);
+
     //Resource<Payment> getPayment(@RequestParam("_limit") final int postLimit);
 
-//    @RequestMapping(method = POST, value = "/23ecf75e-000f-5000-8000-149fe17e1ffa",
-//            consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-//    Post savePost(@RequestBody Post post);
+    @RequestMapping(method = POST, value = "/",
+            consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    //Payment savePost(@RequestBody Payment payment);
+    String savePost(@RequestBody Payment payment);
 }
