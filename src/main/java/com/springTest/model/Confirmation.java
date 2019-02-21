@@ -11,9 +11,9 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaymentMethod {
-    private String id;
-    private String saved;
+public class Confirmation {
     private String type;
+    private String return_url;
+    private String confirmation_url;
 
 }

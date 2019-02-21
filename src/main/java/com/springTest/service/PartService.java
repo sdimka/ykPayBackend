@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PartService {
 
-    long save(Part part);
+    String save(Part part);
 
     Part get(long id);
 

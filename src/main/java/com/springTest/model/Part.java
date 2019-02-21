@@ -27,8 +27,28 @@ public class Part {
 
     private int courseType;
 
+    private Float totalSum;
+
+    private String description;
+
      // confirmPersonal ?
     private boolean confirmPersonal;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Float getTotalSum() {
+        return totalSum;
+    }
+
+    public void setTotalSum(Float totalSum) {
+        this.totalSum = totalSum;
+    }
 
     public Long getId() {
         return id;

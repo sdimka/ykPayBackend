@@ -1,8 +1,7 @@
-package com.springTest.controller;
+package httpReqTest;
 
 
 import com.springTest.model.Payment;
-import com.springTest.feignService.FeignClientConfiguration;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.hateoas.Resource;
 import org.springframework.web.bind.annotation.PathVariable;

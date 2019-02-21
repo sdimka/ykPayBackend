@@ -1,6 +1,5 @@
 package httpReqTest;
 
-import com.springTest.controller.ApiClient;
 import com.springTest.model.Payment;
 import com.springTest.model.Amount;
 import com.springTest.model.PaymentMethod;

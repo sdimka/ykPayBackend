@@ -1,10 +1,7 @@
 package com.springTest.model;
 
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Payment {
     private String id;
     private String status;
@@ -23,12 +21,18 @@ public class Payment {
     @Setter(AccessLevel.NONE)
     private PaymentMethod payment_method;
 
+    private Confirmation confirmation;
+
+    private boolean capture;
+
     private String description;
 
     public String toString() {
         //
-        return String.format("\n id: %s \n Status: %s \n Value: %f %s \n Paid: %s \n Description: %s \n S/N: %s \n",
-                id, status, amount.getValue(), amount.getCurrency(), paid, description, payment_method.getId());
+        return String.format("\n id: %s \n Status: %s \n Value: %f %s \n Paid: %s \n Description: %s \n " +
+                        "S/N: %s \n URL: %s \n",
+                id, status, amount.getValue(), amount.getCurrency(),
+                paid, description, payment_method.getId(), confirmation.getConfirmation_url());
     }
 
     @JsonGetter("payment_method_data")
