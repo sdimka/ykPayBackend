@@ -33,6 +33,7 @@ public class PartController {
     //---get all ---
     @GetMapping("/part")
     public ResponseEntity<List<Part>> list() {
+
         List<Part> books = service.list();
         return ResponseEntity.ok().body(books);
     }

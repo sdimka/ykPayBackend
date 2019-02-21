@@ -1,5 +1,6 @@
 package httpReqTest;
 
+import com.springTest.controller.ApiClient;
 import com.springTest.model.Payment;
 import com.springTest.model.Amount;
 import com.springTest.model.PaymentMethod;
@@ -10,11 +11,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-
-
-import java.util.List;
 
 
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)

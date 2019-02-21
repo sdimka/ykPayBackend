@@ -9,7 +9,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static org.hibernate.cfg.Environment.*;
 
@@ -19,8 +18,14 @@ import static org.hibernate.cfg.Environment.*;
 @EnableTransactionManagement
 @ComponentScans(value = {
         @ComponentScan("com.springTest.dao"),
-        @ComponentScan("com.springTest.service")
+        @ComponentScan("com.springTest.service"),
+        @ComponentScan("com.springTest.feignService")
 })
+
+// ---------------------
+
+
+// --------------------
 
 //@ComponentScan(
 //        basePackages ={ "com.springTest" },

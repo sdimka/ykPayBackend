@@ -1,4 +1,4 @@
-package httpReqTest;
+package com.springTest.feignService;
 
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
