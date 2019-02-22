@@ -47,4 +47,12 @@ public class PartDAOImpl implements PartDAO {
         Part part = sessionFactory.getCurrentSession().byId(Part.class).load(id);
         sessionFactory.getCurrentSession().delete(part);
     }
+
+    @Override
+    public void updatePaymentId(long id, String newPaymentID) {
+        Session session = sessionFactory.getCurrentSession();
+        Part tempPart = session.byId(Part.class).load(id);
+        tempPart.setPaymentID(newPaymentID);
+        session.flush();
+    }
 }

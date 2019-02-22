@@ -21,9 +21,20 @@ public class PartController {
     //---Add new ---
     @PostMapping("/part")
     public ResponseEntity<?> save(@RequestBody Part part) {
-        String id = service.save(part);
-        id = "{ \"url\": \"" + id + "\"}";
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(id);
+        long id = service.save(part); // Сразу сохраняем в базу, на случай, если что-то случится
+        String url = service.register(part);
+
+        url = "{ \"url\": \"" + url + "\"}";
+
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(url);
+    }
+
+    // ---- Lisen for new status sending by Yandex
+    @PostMapping("/pstat")
+    public ResponseEntity<?> getNewStatus(@RequestBody Part part) {
+      //  String id = service.save(part);
+      //  id = "{ \"url\": \"" + id + "\"}";
+        return ResponseEntity.ok().build();
     }
 
     //---Get by id---

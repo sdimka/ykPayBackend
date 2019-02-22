@@ -15,4 +15,6 @@ public interface PartDAO {
     void update(long id, Part part);
 
     void delete(long id);
+
+    void updatePaymentId(long id, String newPaymentID);
 }

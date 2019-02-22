@@ -40,23 +40,31 @@ public class PartServiceImpl implements PartService{
     }
 
     @Override
-    public String save(Part part) {
-        long localId = dao.save(part);
+    public long save(Part part) {
+        return dao.save(part);
+
+    }
+
+    @Override
+    public String register(Part part) {
 
         Payment paymentToSend = Payment.builder()
                 .amount(Amount.builder().currency("RUB").value(part.getTotalSum()).build())
-                .payment_method(PaymentMethod.builder().type("bank_card").build())
+                .payment_method(PaymentMethod.builder().type("bank_card").id("New-Id-To-Insert").build()) // remove ID
                 .confirmation(Confirmation.builder().type("redirect").return_url("http://alliancebeauty.ru/chemp_reg/?pay=success").build())
                 .capture(true)
                 .description(part.getDescription())
                 .build();
 
-        //Payment confirmedPayment = feignService.savePayment(paymentToSend);
-        System.out.println(paymentToSend);
+        //Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
+        //System.out.println(paymentToSend);
 
-        //toDO Update record in part with confirmedPayment.payment_method.getId()
+        //dao.updatePaymentId(part.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
+        dao.updatePaymentId(part.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
 
-        return "http://somesite.com/";//confirmedPayment.getConfirmation().getConfirmation_url();
+        // return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
+        return "http://somesite.com/";  // DEMO
+
     }
 
     @Override
@@ -67,6 +75,11 @@ public class PartServiceImpl implements PartService{
     @Override
     public void delete(long id) {
         dao.delete(id);
+    }
+
+    @Override
+    public void getNewStatus(Part part) {
+
     }
 }
 

@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface PartService {
 
-    String save(Part part);
+    long save(Part part);
+
+    String register(Part part);
 
     Part get(long id);
 
@@ -16,4 +18,5 @@ public interface PartService {
 
     void delete(long id);
 
+    void getNewStatus(Part part);
 }

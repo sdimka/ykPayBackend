@@ -76,14 +76,4 @@ public class ApiClientImpl implements ApiClient {
         return resultPayment;
     }
 
-//    @Override
-//    public Resource<Payment> getPayment(int postLimit, String paymentID) {
-//
-//        return null;
-//    }
-//
-//    @Override
-//    public String savePost(Payment payment) {
-//        return null;
-//    }
 }
