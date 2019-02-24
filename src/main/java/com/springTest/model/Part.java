@@ -1,11 +1,10 @@
 package com.springTest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity (name = "Part")
 public class Part {
@@ -34,8 +33,22 @@ public class Part {
      // confirmPersonal ?
     private boolean confirmPersonal;
 
+    @ElementCollection
+    @CollectionTable(name = "nomination", joinColumns = @JoinColumn(name = "part_id"))
+    @Column(name = "nominationsId")
+    private List<Nomination> nominations = new ArrayList<>();
+
+
     public String getDescription() {
         return description;
+    }
+
+    public List<Nomination> getNominations() {
+        return nominations;
+    }
+
+    public void setNominations(List<Nomination> nomination) {
+        this.nominations = nomination;
     }
 
     public void setDescription(String description) {

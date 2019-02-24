@@ -1,5 +1,6 @@
 package com.springTest.controller;
 
+import com.springTest.model.Nomination;
 import com.springTest.model.Part;
 import com.springTest.service.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -21,6 +23,9 @@ public class PartController {
     //---Add new ---
     @PostMapping("/part")
     public ResponseEntity<?> save(@RequestBody Part part) {
+        //List<Nomination> lis = new ArrayList<>();
+        //lis.add(Nomination.builder().id(1).name("Bla-bla-bla").isSelected(true).build());
+        //part.setNomination(lis);
         long id = service.save(part); // Сразу сохраняем в базу, на случай, если что-то случится
         String url = service.register(part);
 
