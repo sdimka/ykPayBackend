@@ -62,7 +62,7 @@ public class PartServiceImpl implements PartService{
         //dao.updatePaymentId(part.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
         dao.updatePaymentId(part.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
 
-        // return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
+        //return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
         return "http://somesite.com/";  // DEMO
 
     }

@@ -53,8 +53,10 @@ public class PartController {
     @GetMapping("/part")
     public ResponseEntity<List<Part>> list() {
 
-        List<Part> books = service.list();
-        return ResponseEntity.ok().body(books);
+        List<Part> parts = service.list();
+        parts.forEach(p -> p.getNominations().forEach( n -> System.out.println(n.getName())));
+        //return ResponseEntity.ok().body(parts);
+        return ResponseEntity.ok().build();
     }
 
     //---Update by id---

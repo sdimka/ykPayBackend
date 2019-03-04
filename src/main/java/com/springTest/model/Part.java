@@ -33,7 +33,7 @@ public class Part {
      // confirmPersonal ?
     private boolean confirmPersonal;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "nomination", joinColumns = @JoinColumn(name = "part_id"))
     @Column(name = "nominationsId")
     private List<Nomination> nominations = new ArrayList<>();

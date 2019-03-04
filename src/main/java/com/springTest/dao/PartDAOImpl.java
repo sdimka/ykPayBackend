@@ -1,6 +1,7 @@
 package com.springTest.dao;
 
 import com.springTest.model.Part;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,11 @@ public class PartDAOImpl implements PartDAO {
 
     @Override
     public Part get(long id) {
-        return sessionFactory.getCurrentSession().get(Part.class, id);
+        Part part = sessionFactory.getCurrentSession().get(Part.class, id);
+        Hibernate.initialize(part.getNominations());
+        //part.getNominations().iterator();
+        //return sessionFactory.getCurrentSession().get(Part.class, id);
+        return part;
     }
 
     @Override
