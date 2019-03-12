@@ -29,6 +29,7 @@ public class PartDAOImpl implements PartDAO {
     @Override
     public List<Part> list() {
         List<Part> list = sessionFactory.getCurrentSession().createQuery("from Part").list();
+        list.forEach(a -> Hibernate.initialize(a.getNominations()));
         return list;
     }
 

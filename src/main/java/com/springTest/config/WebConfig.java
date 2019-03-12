@@ -8,7 +8,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 //@ComponentScan(basePackageClasses = AppConfig.class,
 //        useDefaultFilters=false, includeFilters={@ComponentScan.Filter(org.springframework.stereotype.Controller.class)})
-public class WebConfig extends WebMvcConfigurerAdapter { //WebMvcConfigurerAdapter
+public class WebConfig implements WebMvcConfigurer { //WebMvcConfigurerAdapter
 
 
 }

@@ -52,11 +52,8 @@ public class PartController {
     //---get all ---
     @GetMapping("/part")
     public ResponseEntity<List<Part>> list() {
-
         List<Part> parts = service.list();
-        parts.forEach(p -> p.getNominations().forEach( n -> System.out.println(n.getName())));
-        //return ResponseEntity.ok().body(parts);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(parts);
     }
 
     //---Update by id---
