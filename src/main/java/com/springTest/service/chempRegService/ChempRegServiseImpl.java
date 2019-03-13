@@ -22,13 +22,8 @@ public class ChempRegServiseImpl {
 
 
     public ChempReg get(long id) {
-        ChempReg cr = ChempReg.builder()
-                .id(1)
-                .name("Vasya")
-                .email("sd@may.spb.ru").build();
+        return dao.get(id);
 
-        //return dao.get(id);
-        return cr;
     }
 
     public List<ChempReg> list() {
@@ -61,10 +56,10 @@ public class ChempRegServiseImpl {
                 .description("Оплата тренеровок для чемпионата")
                 .build();
 
-        //Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
+        // Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
         //System.out.println(paymentToSend);
 
-        //dao.updatePaymentId(part.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
+        // dao.updatePaymentId(chempReg.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
         dao.updatePaymentId(chempReg.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
 
         //return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!

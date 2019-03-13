@@ -56,13 +56,13 @@ public class PartServiceImpl implements PartService{
                 .description(part.getDescription())
                 .build();
 
-        //Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
+//        Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
         //System.out.println(paymentToSend);
 
-        //dao.updatePaymentId(part.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
+//        dao.updatePaymentId(part.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
         dao.updatePaymentId(part.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
 
-        //return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
+//        return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
         return "http://somesite.com/";  // DEMO
 
     }

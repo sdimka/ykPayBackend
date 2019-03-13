@@ -1,7 +1,7 @@
 package com.springTest.model.chempReg;
 
 
-import lombok.Builder;
+//import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Builder
+// @Builder
 @Getter
 @Setter
 @Entity(name = "ChempReg")
@@ -18,7 +18,7 @@ public class ChempReg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String surName;
     private String phone;
@@ -35,4 +35,7 @@ public class ChempReg {
     @CollectionTable(name = "trainList", joinColumns = @JoinColumn(name = "chempReg_id"))
     @Column(name = "nominationsId")
     private List<String> selectedTrainig = new ArrayList<>();
+
+    public ChempReg() {
+    }
 }
