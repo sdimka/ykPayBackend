@@ -2,6 +2,9 @@ package com.springTest.feignService;
 
 
 import com.springTest.model.Payment;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -43,17 +46,23 @@ public class ApiClientImpl implements ApiClient {
         RestTemplate rt = new RestTemplate();
         UUID uuid = UUID.randomUUID();
 
-        rt.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        rt.getMessageConverters().add(new StringHttpMessageConverter());
+        //rt.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        //rt.getMessageConverters().add(new StringHttpMessageConverter());
+        //List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
+        //interceptors.add(new RestTemplateHeaderModifierInterceptor("Idempotence-Key", uuid.toString()));
+        //rt.setInterceptors(interceptors);
+        //rt.getInterceptors().add();
+        //new BasicAuthorizationInterceptor("548831", "test_BXC19NGsNOMn38f1e1t1JBFH4yuieszpj-P0UAb9BLQ"));
 
-        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
-        interceptors.add(new RestTemplateHeaderModifierInterceptor("Idempotence-Key", uuid.toString()));
 
-        rt.setInterceptors(interceptors);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Idempotence-Key", uuid.toString());
+        headers.setBasicAuth("582943", "live_Bu7F4-tGWzszTAtM74yFbVhxeLsmsKy0Rnu0hxUq5eg");
 
-        rt.getInterceptors().add(
-                new BasicAuthorizationInterceptor("548831", "test_BXC19NGsNOMn38f1e1t1JBFH4yuieszpj-P0UAb9BLQ"));
 
+        HttpEntity<Payment> request = new HttpEntity<Payment>(payment, headers);
 
         String uri = "https://payment.yandex.net/api/v3/payments/";
         //String uri = "https://postman-echo.com/post/";
@@ -67,7 +76,7 @@ public class ApiClientImpl implements ApiClient {
 //                .build();
 
 //        String res = rt.postForObject(uri, payment, String.class);
-        Payment resultPayment = rt.postForObject(uri, payment, Payment.class);
+        Payment resultPayment = rt.postForObject(uri, request, Payment.class);
 
         System.out.println(" ----------------------------------------------------------------------------------");
         System.out.println(resultPayment);

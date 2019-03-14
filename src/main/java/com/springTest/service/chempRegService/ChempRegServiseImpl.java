@@ -48,22 +48,24 @@ public class ChempRegServiseImpl {
 
     public String register(ChempReg chempReg) {
 
-        Payment paymentToSend = Payment.builder()
-                .amount(Amount.builder().currency("RUB").value(chempReg.getSumTotal()).build())
-                .payment_method(PaymentMethod.builder().type("bank_card").id("New-Id-To-Insert").build()) // remove ID
-                .confirmation(Confirmation.builder().type("redirect").return_url("http://alliancebeauty.ru/chemp_reg/?pay=success").build())
-                .capture(true)
-                .description("Оплата тренеровок для чемпионата")
-                .build();
+        if (chempReg.getSumTotal() > 0 ) {
+            Payment paymentToSend = Payment.builder()
+                    .amount(Amount.builder().currency("RUB").value(chempReg.getSumTotal()).build())
+                    .payment_method(PaymentMethod.builder().type("bank_card").id("New-Id-To-Insert").build()) // remove ID
+                    .confirmation(Confirmation.builder().type("redirect").return_url("http://alliancebeauty.ru/chemp_reg/?pay=success").build())
+                    .capture(true)
+                    .description("Оплата тренеровок для чемпионата")
+                    .build();
 
-        // Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
-        //System.out.println(paymentToSend);
+            Payment confirmedPayment = feignService.savePayment(paymentToSend); // WORK!!!
+            //System.out.println(paymentToSend);
 
-        // dao.updatePaymentId(chempReg.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
-        dao.updatePaymentId(chempReg.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
+            dao.updatePaymentId(chempReg.getId(), confirmedPayment.getpayment_method_data().getId()); // WORK!!!
+//        dao.updatePaymentId(chempReg.getId(), paymentToSend.getpayment_method_data().getId()); // DEMO
 
-        //return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
-        return "http://somesite.com/";  // DEMO
+            return confirmedPayment.getConfirmation().getConfirmation_url(); //  WORK!!!
+//        return "http://somesite.com/";  // DEMO
+        } else return "https://ssl.alliancebeauty.ru/train_reg/index.html#/complete";
 
     }
 }
