@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Projects" />
         <module name="springTest" />
+        <module name="ykPayBackend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Projects" target="1.8" />
+      <module name="ykPayBackend" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

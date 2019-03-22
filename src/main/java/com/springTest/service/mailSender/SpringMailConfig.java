@@ -1,4 +1,4 @@
-package com.springTest.config;
+package com.springTest.service.mailSender;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -29,7 +30,7 @@ public class SpringMailConfig implements ApplicationContextAware, EnvironmentAwa
 
     public static final String EMAIL_TEMPLATE_ENCODING = "UTF-8";
 
-    private static final String JAVA_MAIL_FILE = "mail/classpath:javamail.properties";
+    private static final String JAVA_MAIL_FILE = "classpath:mail/javamail.properties";
 
     private static final String HOST = "mail.server.host";
     private static final String PORT = "mail.server.port";

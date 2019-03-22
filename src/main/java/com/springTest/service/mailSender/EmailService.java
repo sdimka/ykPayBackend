@@ -1,7 +1,5 @@
 package com.springTest.service.mailSender;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
@@ -15,13 +13,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamSource;
-import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import com.springTest.config.SpringMailConfig;
 
 @Service
 public class EmailService {
@@ -73,7 +69,7 @@ public class EmailService {
         final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
         final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
         message.setSubject("Example plain TEXT email");
-        message.setFrom("thymeleaf@example.com");
+        message.setFrom("sd@may.spb.ru");
         message.setTo(recipientEmail);
 
         // Create the plain TEXT body using Thymeleaf
