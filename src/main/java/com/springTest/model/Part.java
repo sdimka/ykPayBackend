@@ -19,7 +19,7 @@ public class Part {
     private LocalDate bDay;
     private String salon;
     private String mannequin;
-    private int phone;
+    private String phone;
     private String email;
     private String paymentID;
     //private String nominations;
@@ -145,11 +145,11 @@ public class Part {
         this.mannequin = mannequin;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
