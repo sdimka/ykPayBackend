@@ -6,11 +6,12 @@
 </head>
 <body>
 <p th:text="#{greeting(${name})}">
-    Hello, Some Name!
+    Здравствуйте, Some Name!
 </p>
 <p>
-    You have been successfully subscribed to the <b>Fake newsletter</b> on
-    <span th:text="${#dates.format(subscriptionDate)}">28-12-2012 text</span>
+    Вы прошли регистрацию на участие в
+    <b>XXI Чемпионате Санкт-Петербурга по парикмахерскому искусству и декоративной косметике</b>
+    ( Дата регистрации: <span th:text="${#dates.format(subscriptionDate)}">28-12-2012 text</span>)
 </p>
 <p>В следующих номинациях:</p>
 <ul th:remove="all-but-first">
@@ -21,8 +22,11 @@
     <li>Номинация 3</li>
 </ul>
 <p>
-    Regards, <br />
-    &emsp; <em>Здесь будет русский текст!</em>
+    С уважением, <br />
+    &emsp; <em>администрация «Союза предприятий и специалистов индустрии красоты Северо-Запада».</em>
+    Тел.: +7 (812) 309-06-94<br />
+    Тел: +7 (921) 430-17-08<br />
+    director@alliancebeauty.ru<br />
 </p>
 </body>
 </html>
