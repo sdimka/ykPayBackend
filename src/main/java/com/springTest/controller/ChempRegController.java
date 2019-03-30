@@ -48,7 +48,7 @@ public class ChempRegController {
         Locale locale = Locale.ENGLISH;
 
         try {
-            this.emailService.sendTextMail(recipientName, recipientEmail, locale);
+            this.emailService.sendSimpleMail(recipientName, recipientEmail, locale);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

@@ -3,12 +3,14 @@ package com.springTest.controller;
 import com.springTest.model.Nomination;
 import com.springTest.model.Part;
 import com.springTest.service.PartService;
+import com.springTest.service.mailSender.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class PartController {
     @Autowired
     private PartService service;
 
+    @Autowired
+    private EmailService emailService;
+
     //---Add new ---
     @PostMapping("/part")
     public ResponseEntity<?> save(@RequestBody Part part) {
@@ -27,7 +32,15 @@ public class PartController {
         //lis.add(Nomination.builder().id(1).name("Bla-bla-bla").isSelected(true).build());
         //part.setNomination(lis);
         long id = service.save(part); // Сразу сохраняем в базу, на случай, если что-то случится
-        String url = service.register(part);
+
+        // Send mail with registration info
+        try {
+            this.emailService.sendRegMail(part);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        String url = service.register(part); // Register payment in YK
 
         url = "{ \"url\": \"" + url + "\"}";
 
